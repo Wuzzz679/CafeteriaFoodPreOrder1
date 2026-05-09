@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "794382074112",
+    "project_id": "cafeteria-foodordering",
+    "storage_bucket": "cafeteria-foodordering.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794382074112:android:065c8ad4cc09caee8bf3e5",
+        "android_client_info": {
+          "package_name": "com.example.cafeteriafoodpreorder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq_yOVLGcnGeVYqtTp6rAhHxxBAfEgIpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

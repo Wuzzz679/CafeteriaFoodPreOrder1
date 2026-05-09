@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Primary actions group -->
+    <group android:id="@+id/group_primary" android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/action_orders"
+            android:title="My Orders"
+            android:icon="@drawable/ic_receipt"
+            android:enabled="true"
+            app:showAsAction="always"
+            app:iconTint="@android:color/white" />
+    </group>
+
+    <!-- Divider (visual separator) -->
+    <item
+        android:id="@+id/divider"
+        android:title=""
+        android:enabled="false"
+        app:showAsAction="never" />
+
+    <!-- Secondary actions -->
+    <group android:id="@+id/group_secondary" android:checkableBehavior="none">
+        <item
+            android:id="@+id/action_profile"
+            android:title="Profile"
+            android:icon="@drawable/ic_account"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_logout"
+            android:title="Logout"
+            android:icon="@drawable/ic_logout"
+            app:showAsAction="never" />
+    </group>
+
+</menu>

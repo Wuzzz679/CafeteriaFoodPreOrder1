@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Cafeteria Food PreOrder</string>
+    <string name="cafeteria_pre_order_title">Cafeteria Pre-Order</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login">Login</string>
+    <string name="go_to_register">Don\'t have an account? Register</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="food_image_desc">Food image</string>
+    <string name="remove_item_desc">Remove item</string>
+    <string name="dashboard_title">Dashboard</string>
+    <string name="total_orders">Total Orders</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="avg_order">Average Order</string>
+    <string name="most_ordered">Most Ordered</string>
+
+
+    <string name="total">Total:</string>
+    <string name="place_order">Place Order</string>
+    <string name="empty_cart">Your cart is empty.\nAdd some delicious items from the menu!</string>
+    <string name="no_orders">You haven\'t placed any orders yet.\nGo to the menu and order something delicious!</string>
+</resources>
