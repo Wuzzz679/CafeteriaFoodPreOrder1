@@ -17,6 +17,10 @@
     <string name="total_spent">Total Spent</string>
     <string name="avg_order">Average Order</string>
     <string name="most_ordered">Most Ordered</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="pay_at_counter">Pay at Counter</string>
+    <string name="online_payment">Online Payment</string>
+    <string name="please_select_payment">Please select a payment method</string>
 
 
     <string name="total">Total:</string>

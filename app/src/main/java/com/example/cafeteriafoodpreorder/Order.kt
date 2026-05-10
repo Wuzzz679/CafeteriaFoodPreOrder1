@@ -7,7 +7,8 @@ data class Order(
     val totalAmount: Double = 0.0,
     val status: String = "Order Placed",
     val timestamp: Long = 0L,
-    val pickupTime: Long = 0L
+    val pickupTime: Long = 0L,
+    val paymentMethod: String = ""
 )
 
 data class OrderItem(

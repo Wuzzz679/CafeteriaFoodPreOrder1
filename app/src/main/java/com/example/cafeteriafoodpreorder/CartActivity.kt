@@ -1,6 +1,7 @@
 package com.example.cafeteriafoodpreorder
 
 import android.os.Bundle
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,8 +21,9 @@ class CartActivity : AppCompatActivity() {
     private lateinit var adapter: CartAdapter
     private lateinit var tvTotalPrice: TextView
     private lateinit var btnPlaceOrder: MaterialButton
-    private lateinit var btnBackToMenu: MaterialButton  // added
+    private lateinit var btnBackToMenu: MaterialButton
     private lateinit var tvEmptyCart: TextView
+    private lateinit var rgPaymentMethod: RadioGroup   // added
     private var cartItems = mutableListOf<CartItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +42,8 @@ class CartActivity : AppCompatActivity() {
         tvTotalPrice = findViewById(R.id.tvTotalPrice)
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder)
         tvEmptyCart = findViewById(R.id.tvEmptyCart)
-        btnBackToMenu = findViewById(R.id.btnBackToMenu)  // initialize
+        btnBackToMenu = findViewById(R.id.btnBackToMenu)
+        rgPaymentMethod = findViewById(R.id.rgPaymentMethod)  // initialize
 
         rvCart.layoutManager = LinearLayoutManager(this)
         adapter = CartAdapter(cartItems,
@@ -59,9 +62,8 @@ class CartActivity : AppCompatActivity() {
             placeOrder()
         }
 
-        // Back to Menu button click listener
         btnBackToMenu.setOnClickListener {
-            finish()  // returns to MenuActivity
+            finish()
         }
 
         refreshCart()
@@ -87,6 +89,19 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun placeOrder() {
+        // Check if a payment method is selected
+        val selectedId = rgPaymentMethod.checkedRadioButtonId
+        if (selectedId == -1) {
+            Toast.makeText(this, "Please select a payment method", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val paymentMethod = when (selectedId) {
+            R.id.rbCounter -> "Pay at Counter"
+            R.id.rbOnline -> "Online Payment"
+            else -> "Unknown"
+        }
+
         val userId = auth.currentUser?.uid ?: return
         val orderId = UUID.randomUUID().toString()
         val timestamp = System.currentTimeMillis()
@@ -106,7 +121,8 @@ class CartActivity : AppCompatActivity() {
             "totalAmount" to CartManager.getTotalPrice(),
             "status" to "Order Placed",
             "timestamp" to timestamp,
-            "pickupTime" to (timestamp + 30 * 60 * 1000) // 30 min from now
+            "pickupTime" to (timestamp + 30 * 60 * 1000), // 30 min from now
+            "paymentMethod" to paymentMethod              // added field
         )
 
         db.collection("orders").document(orderId)
@@ -114,7 +130,12 @@ class CartActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 CartManager.clearCart()
                 refreshCart()
-                Toast.makeText(this, "Order placed! Pickup in 30 min.", Toast.LENGTH_LONG).show()
+                val message = if (paymentMethod == "Online Payment") {
+                    "Order placed! Proceed to online payment."
+                } else {
+                    "Order placed! Pay at counter on pickup."
+                }
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                 finish()
             }
             .addOnFailureListener { e ->

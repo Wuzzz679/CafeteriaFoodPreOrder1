@@ -66,6 +66,16 @@
             android:textStyle="bold"
             android:layout_marginTop="8dp" />
 
+        <!-- Payment Method (new) -->
+        <TextView
+            android:id="@+id/tvPaymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment: ..."
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp" />
+
         <!-- Timestamp -->
         <TextView
             android:id="@+id/tvOrderTime"
@@ -73,7 +83,8 @@
             android:layout_height="wrap_content"
             android:text="Placed: ..."
             android:textSize="12sp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="4dp" />
 
         <!-- Pickup time -->
         <TextView

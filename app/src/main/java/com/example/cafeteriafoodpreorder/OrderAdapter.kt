@@ -39,13 +39,12 @@ class OrderAdapter(
         private val tvOrderTotal: TextView = itemView.findViewById(R.id.tvOrderTotal)
         private val tvOrderTime: TextView = itemView.findViewById(R.id.tvOrderTime)
         private val tvPickupTime: TextView = itemView.findViewById(R.id.tvPickupTime)
+        private val tvPaymentMethod: TextView = itemView.findViewById(R.id.tvPaymentMethod)   // added
 
         fun bind(order: Order) {
-            // Display short order ID (first 8 chars)
             tvOrderId.text = "Order #${order.orderId.take(8)}"
             tvOrderStatus.text = order.status
 
-            // Set status badge color dynamically
             val statusColorRes = when (order.status) {
                 "Order Placed" -> R.color.status_placed
                 "Preparing" -> R.color.status_preparing
@@ -55,16 +54,18 @@ class OrderAdapter(
             }
             tvOrderStatus.setBackgroundColor(ContextCompat.getColor(itemView.context, statusColorRes))
 
-            // Build items summary
             val itemsString = order.items.joinToString(", ") { "${it.name} (${it.quantity})" }
             tvOrderItems.text = itemsString
 
             tvOrderTotal.text = "Total: ₱${String.format("%.2f", order.totalAmount)}"
 
-            // Format timestamps
             val dateFormat = SimpleDateFormat("MMM dd, hh:mm a", Locale.getDefault())
             tvOrderTime.text = "Placed: ${dateFormat.format(Date(order.timestamp))}"
             tvPickupTime.text = "Pickup: ${dateFormat.format(Date(order.pickupTime))}"
+
+            // Display payment method (or "Not specified" if empty)
+            val paymentText = if (order.paymentMethod.isNotEmpty()) order.paymentMethod else "Payment: Not specified"
+            tvPaymentMethod.text = paymentText
         }
     }
 }
