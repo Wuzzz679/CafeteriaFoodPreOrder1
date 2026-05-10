@@ -63,7 +63,7 @@ class OrderAdapter(
             tvOrderTime.text = "Placed: ${dateFormat.format(Date(order.timestamp))}"
             tvPickupTime.text = "Pickup: ${dateFormat.format(Date(order.pickupTime))}"
 
-            // Display payment method (or "Not specified" if empty)
+
             val paymentText = if (order.paymentMethod.isNotEmpty()) order.paymentMethod else "Payment: Not specified"
             tvPaymentMethod.text = paymentText
         }

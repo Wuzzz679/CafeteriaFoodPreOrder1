@@ -21,7 +21,7 @@ class OrderHistoryActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var tvEmptyOrders: TextView
     private lateinit var adapter: OrderAdapter
-    private lateinit var btnBackToMenu: MaterialButton   // added
+    private lateinit var btnBackToMenu: MaterialButton
     private val orderList = mutableListOf<Order>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class OrderHistoryActivity : AppCompatActivity() {
         rvOrders = findViewById(R.id.rvOrders)
         progressBar = findViewById(R.id.progressBar)
         tvEmptyOrders = findViewById(R.id.tvEmptyOrders)
-        btnBackToMenu = findViewById(R.id.btnBackToMenu)   // initialize
+        btnBackToMenu = findViewById(R.id.btnBackToMenu)
 
         rvOrders.layoutManager = LinearLayoutManager(this)
         adapter = OrderAdapter(orderList) { order ->
@@ -47,9 +47,9 @@ class OrderHistoryActivity : AppCompatActivity() {
         }
         rvOrders.adapter = adapter
 
-        // Back to Menu button click
+
         btnBackToMenu.setOnClickListener {
-            finish()  // returns to MenuActivity
+            finish()
         }
 
         loadUserOrders()

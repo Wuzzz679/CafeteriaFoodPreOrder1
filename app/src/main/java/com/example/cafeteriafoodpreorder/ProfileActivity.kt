@@ -122,7 +122,7 @@ class ProfileActivity : AppCompatActivity() {
             }
     }
 
-    // ---------- Password change dialog using EditText (not TextInputEditText) ----------
+
     private fun showChangePasswordDialog() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_change_password, null)
         // Use EditText because the simplified layout uses plain EditText

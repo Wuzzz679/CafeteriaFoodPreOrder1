@@ -23,7 +23,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var btnPlaceOrder: MaterialButton
     private lateinit var btnBackToMenu: MaterialButton
     private lateinit var tvEmptyCart: TextView
-    private lateinit var rgPaymentMethod: RadioGroup   // added
+    private lateinit var rgPaymentMethod: RadioGroup
     private var cartItems = mutableListOf<CartItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class CartActivity : AppCompatActivity() {
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder)
         tvEmptyCart = findViewById(R.id.tvEmptyCart)
         btnBackToMenu = findViewById(R.id.btnBackToMenu)
-        rgPaymentMethod = findViewById(R.id.rgPaymentMethod)  // initialize
+        rgPaymentMethod = findViewById(R.id.rgPaymentMethod)
 
         rvCart.layoutManager = LinearLayoutManager(this)
         adapter = CartAdapter(cartItems,
@@ -121,8 +121,8 @@ class CartActivity : AppCompatActivity() {
             "totalAmount" to CartManager.getTotalPrice(),
             "status" to "Order Placed",
             "timestamp" to timestamp,
-            "pickupTime" to (timestamp + 30 * 60 * 1000), // 30 min from now
-            "paymentMethod" to paymentMethod              // added field
+            "pickupTime" to (timestamp + 30 * 60 * 1000),
+            "paymentMethod" to paymentMethod
         )
 
         db.collection("orders").document(orderId)

@@ -73,7 +73,7 @@ class DashboardActivity : AppCompatActivity() {
                 tvTotalSpent.text = "₱${String.format("%.2f", totalSpent)}"
                 tvAvgOrder.text = "₱${String.format("%.2f", avgOrder)}"
 
-                // Calculate most ordered item
+
                 val itemCount = mutableMapOf<String, Int>()
                 orders.forEach { doc ->
                     val items = doc.get("items") as? List<*> ?: return@forEach

@@ -21,16 +21,16 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
+
         auth = FirebaseAuth.getInstance()
 
-        // Initialize views
+
         etEmail = findViewById(R.id.etLoginEmail)
         etPassword = findViewById(R.id.etLoginPassword)
         btnLogin = findViewById(R.id.btnLogin)
         tvGoToRegister = findViewById(R.id.tvGoToRegister)
 
-        // Login button click listener
+
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        // Go to Register screen
+
         tvGoToRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }

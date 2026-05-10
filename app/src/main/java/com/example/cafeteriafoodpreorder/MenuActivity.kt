@@ -23,8 +23,8 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var etSearch: EditText
     private lateinit var adapter: FoodAdapter
-    private val fullFoodList = mutableListOf<FoodItem>()   // original data from Firestore
-    private val filteredList = mutableListOf<FoodItem>()   // displayed after filter
+    private val fullFoodList = mutableListOf<FoodItem>()
+    private val filteredList = mutableListOf<FoodItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +41,13 @@ class MenuActivity : AppCompatActivity() {
         etSearch = findViewById(R.id.etSearch)
 
         rvMenu.layoutManager = LinearLayoutManager(this)
-        // Use filteredList for adapter
+
         adapter = FoodAdapter(filteredList) { foodItem ->
             addToCart(foodItem)
         }
         rvMenu.adapter = adapter
 
-        // Set up search listener
+
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
